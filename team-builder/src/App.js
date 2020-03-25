@@ -1,23 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+// import { useState } from "react-router-dom" 
+import Form from "./Form";
 
 function App() {
+  // const [teamMember, setTeamMember] = useState(" ") //SET A USESTATE FOR TEAMMEMBER.AND HAVE IT SHOW AN EMPTY STRING
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        
+       
       </header>
     </div>
   );
