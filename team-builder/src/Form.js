@@ -9,7 +9,7 @@ const [form, setForm] = useState ({ // We will now set a form state, this is con
     role: "r" //3rd parameter of this object will be called email
 // ONCE YOU HAVE YOUR PARAMETERS SET UP, WE WILL BE SETTING UP OUR FIRST INPUT, THE NAME ONE, SO WE GO INTO INPUT COMPONENT, AND GET READY TO TYPE IN THE PARAMETER VALUES IN THERE.
 })
-console.log(form) //we are console logging the form variable.
+// console.log(form) //we are console logging the form variable.
 // THIS WILL BE OUR HELPER FUNCTION
 const handleChange=(e) => {  //This is going to handle the change , WE PASS AN EVENT INTO THIS, SO PUT e
     //Inside of here is where we will be modifying our state. So we will be passing an event to this.
@@ -18,9 +18,20 @@ const handleChange=(e) => {  //This is going to handle the change , WE PASS AN E
 
     // Now that we have created our helper function that will handle the changes being made, we can now call it inside of our input by using the onChange MSInputMethodContext. So go to input and use onChange
 } 
+
+const handleSubmit = e => {
+    //anytime you run a submit function, you have to prevent the default to prevent it from refreshing everytime you do something.
+    e.preventDefault(); //no . after prevent for this to not refresh the page
+    props.addMember(form) //???
+    setForm({ //last step, which will setForm to what we had there already.
+        name: "this is why you want an empty string",
+        email: "",
+        role: "r"
+    })
+}
 // REMEMBER TO ONLY KEEP THIS INSIDE OF YOUR RETURN NOT THE KEYS IN YOUR COMPONENT
 return (
-        <form> {/*We are returning a form, so put form inside of the function, this is our form tag*/}
+        <form onSubmit= {(e) => handleSubmit (e)}> {/*We are creating a handler for our submit button. This property is onSubmit, so when that button is pressed, it will see this and will fire off. We are making an anonymous function, we are passing it an e. We will now be making another helper function on line We are returning a form, so put form inside of the function, this is our form tag*/}
                {/* What fields do we need in our form? */}
                 <input  /*We will be adding props to the input tag, in order for a form to work in react, it has to be a controlled input, so the value of the input desplays the stateful value and not the actual value of the dom, the input also changes the stateful value. So like a loop, if you push the a key inside of your input, this input tag will send the letter a to state, and thenstate will return it back to the value of the input*/
                     name= "name" // lets change this later to see what it will break, not sure what this changed
@@ -42,7 +53,7 @@ return (
                     value={form.role}
                     onChange={(e) => handleChange(e)}
                 /> 
-
+                <button type="submit">Submit</button> {/*create a button and set the type to submit, this lets it know this is a submit button for the data above. Now go and create the prop on <form>, onSubmit*/}
         </form>
 
     )
